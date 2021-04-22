@@ -12,6 +12,14 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    // Code from Jason Weismann script
+
+    Animator _animator;
+
+    void Awake() => _animator = GetComponent<Animator>();
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -28,5 +36,13 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+
+        // Animating
+        float velocityZ = Vector3.Dot(direction.normalized, transform.forward);
+        float velocityX = Vector3.Dot(direction.normalized, transform.right);
+
+        _animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime);
+        _animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
+
     }
 }
