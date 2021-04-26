@@ -20,14 +20,23 @@ public class BombThrower : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            ThrowBomb();
+            //ThrowBomb();
+            CreateBomb();
         }
     }
 
     void ThrowBomb()
     {
+        //GameObject bomb = Instantiate(bombPrefab, bombSpawn.position, bombSpawn.rotation);
+        //Rigidbody rb = bomb.GetComponent<Rigidbody>();
+        //rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+    }
+
+    void CreateBomb()
+    {
         GameObject bomb = Instantiate(bombPrefab, bombSpawn.position, bombSpawn.rotation);
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+        rb.useGravity = false;
+
     }
 }
