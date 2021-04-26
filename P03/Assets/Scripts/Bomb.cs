@@ -53,7 +53,8 @@ public class Bomb : MonoBehaviour
             // Damage
         }
         
-        // Remove grenamde
+        // Remove grenade
         Destroy(gameObject);
     }
+
 }

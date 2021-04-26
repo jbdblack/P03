@@ -139,10 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f537706739f804dbf9c0e02815308b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 1
   bombPrefab: {fileID: 8265329183616243927, guid: 06fe9cbeb4554e0458fd272c287f6d7e,
     type: 3}
   bombSpawn: {fileID: 262367239}
+  bombCreated: 0
 --- !u!4 &177523526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1f58c079f559f34db580a18b345da3f,
@@ -1147,7 +1148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.10152891, y: -0.00000003605859, z: 0.0000000036800059, w: 0.9948326}
+  m_LocalRotation: {x: 0.10152891, y: 0.00000003605859, z: -0.0000000036800059, w: 0.9948326}
   m_LocalPosition: {x: 1.4599754, y: 2.5, z: -6.972294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1257,7 +1258,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086320422}
-  m_LocalRotation: {x: 0.10152891, y: -0.00000001913791, z: 0.0000000019531439, w: 0.9948326}
+  m_LocalRotation: {x: 0.10152891, y: 0.00000001913791, z: -0.0000000019531439, w: 0.9948326}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BombThrower : MonoBehaviour
 {
-    public float throwForce = 10f;
+    public float throwForce = 1f;
     public GameObject bombPrefab;
     [SerializeField] Transform bombSpawn;
+    public bool bombCreated = false;
 
     
 
@@ -18,11 +19,20 @@ public class BombThrower : MonoBehaviour
             ThrowBomb();
         }*/
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && bombCreated != true)
         {
             //ThrowBomb();
             CreateBomb();
         }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            ThrowBomb();
+        }
+
+
+
+
     }
 
     public void CreateBomb()
@@ -31,6 +41,7 @@ public class BombThrower : MonoBehaviour
         Debug.Log(bomb + "is created");
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.useGravity = false;
+        bombCreated = true;
 
     }
 
@@ -38,12 +49,14 @@ public class BombThrower : MonoBehaviour
     void ThrowBomb()
     {
         // Find the created bomb
-        GameObject bomb = GameObject.Find("bomb");
+        //GameObject bomb = GameObject.Find("bomb");
+        Rigidbody rb = GameObject.FindWithTag("Bomb").GetComponent<Rigidbody>();
 
         // Turn on gravity and apply force
-        Rigidbody rb = bomb.GetComponent<Rigidbody>();
+        //Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.useGravity = true;
         rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+        bombCreated = false;
     }
 
 
