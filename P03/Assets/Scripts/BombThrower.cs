@@ -25,18 +25,26 @@ public class BombThrower : MonoBehaviour
         }
     }
 
-    void ThrowBomb()
-    {
-        //GameObject bomb = Instantiate(bombPrefab, bombSpawn.position, bombSpawn.rotation);
-        //Rigidbody rb = bomb.GetComponent<Rigidbody>();
-        //rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
-    }
-
-    void CreateBomb()
+    public void CreateBomb()
     {
         GameObject bomb = Instantiate(bombPrefab, bombSpawn.position, bombSpawn.rotation);
+        Debug.Log(bomb + "is created");
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.useGravity = false;
 
     }
+
+
+    void ThrowBomb()
+    {
+        // Find the created bomb
+        GameObject bomb = GameObject.Find("bomb");
+
+        // Turn on gravity and apply force
+        Rigidbody rb = bomb.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
+    }
+
+
 }
