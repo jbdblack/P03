@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BombThrower : MonoBehaviour
 {
-    public float throwForce = 1f;
+    public float throwForce = 0.3f;
     public GameObject bombPrefab;
     [SerializeField] Transform bombSpawn;
     public bool bombCreated = false;
-
+    public Transform _transform;
+    public GameObject currentBomb;
     
 
     // Update is called once per frame
@@ -27,11 +28,10 @@ public class BombThrower : MonoBehaviour
 
         if (Input.GetKey(KeyCode.C))
         {
-            ThrowBomb();
+            ThrowBomb(); 
         }
 
-
-
+        MoveBomb();
 
     }
 
@@ -57,6 +57,17 @@ public class BombThrower : MonoBehaviour
         rb.useGravity = true;
         rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
         bombCreated = false;
+    }
+
+    public void MoveBomb()
+    {
+        if (bombCreated == true)
+        {
+            currentBomb = GameObject.FindWithTag("Bomb");
+            currentBomb.transform.position = bombSpawn.transform.position;
+        }
+
+
     }
 
 
