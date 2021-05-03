@@ -26,6 +26,8 @@ public class BombThrower : MonoBehaviour
             CreateBomb();
         }
 
+        
+
         if (Input.GetKey(KeyCode.C))
         {
             ThrowBomb(); 

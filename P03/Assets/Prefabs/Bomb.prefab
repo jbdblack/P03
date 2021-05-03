@@ -127,3 +127,4 @@ MonoBehaviour:
   radius: 5
   force: 700
   explosionEffect: {fileID: 100000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
+  bt: {fileID: 0}

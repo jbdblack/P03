@@ -14,6 +14,8 @@ public class Bomb : MonoBehaviour
     float countdown;
     bool hasExploded = false;
 
+    public BombThrower bt;
+
 
 
     // Start is called before the first frame update
@@ -25,12 +27,21 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countdown -= Time.deltaTime;
+        /*countdown -= Time.deltaTime;
         if (countdown <= 0f && !hasExploded)
         {
             Explode();
             hasExploded = true;
+        }*/
+
+        if (Input.GetKey(KeyCode.F))
+        {
+            Explode();
+            hasExploded = true;
         }
+
+
+
     }
 
     void Explode()
