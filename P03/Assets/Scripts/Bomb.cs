@@ -14,6 +14,9 @@ public class Bomb : MonoBehaviour
     float countdown;
     bool hasExploded = false;
 
+    private AudioSource source;
+    [SerializeField] AudioClip explosion;
+
     BombThrower bombStatus;
 
 
@@ -23,6 +26,8 @@ public class Bomb : MonoBehaviour
     {
         countdown = delay;
         bombStatus = GameObject.FindWithTag("Player").GetComponent<BombThrower>();
+
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +69,9 @@ public class Bomb : MonoBehaviour
             }
             // Damage
         }
+
+        // Sound Effect
+        source.PlayOneShot(explosion, 1f);
 
         bombStatus.bombCreated = false;
         

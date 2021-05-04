@@ -8,6 +8,7 @@ public class BombThrower : MonoBehaviour
     public GameObject bombPrefab;
     [SerializeField] Transform bombSpawn;
     public bool bombCreated = false;
+    public bool bombThrown = false;
     public Transform _transform;
     public GameObject currentBomb;
     
@@ -15,23 +16,23 @@ public class BombThrower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetMouseButton(0))
-        {
-            ThrowBomb();
-        }*/
+        
 
         if (Input.GetKeyDown("space") && bombCreated != true)
         {
-            //ThrowBomb();
             CreateBomb();
+        }
+        else if(Input.GetKeyDown("space") && bombCreated == true)
+        {
+            ThrowBomb();
         }
 
         
 
-        if (Input.GetKey(KeyCode.C))
+        /*if (Input.GetKeyDown(KeyCode.C))
         {
             ThrowBomb(); 
-        }
+        }*/
 
         MoveBomb();
 
@@ -44,6 +45,7 @@ public class BombThrower : MonoBehaviour
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.useGravity = false;
         bombCreated = true;
+        bombThrown = false;
         Debug.Log("Bomb created");
 
     }
@@ -55,17 +57,21 @@ public class BombThrower : MonoBehaviour
         //GameObject bomb = GameObject.Find("bomb");
         Rigidbody rb = GameObject.FindWithTag("Bomb").GetComponent<Rigidbody>();
 
-        // Turn on gravity and apply force
-        //Rigidbody rb = bomb.GetComponent<Rigidbody>();
-        rb.useGravity = true;
-        rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
-        bombCreated = false;
-        Debug.Log("Bomb thrown");
+       if(bombThrown == false)
+        {
+            rb.useGravity = true;
+
+            rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * (throwForce / 2), ForceMode.Impulse);
+            bombThrown = true;
+            Debug.Log("Bomb thrown");
+        }
+       
     }
 
     public void MoveBomb()
     {
-        if (bombCreated == true)
+        if (bombCreated == true && bombThrown == false)
         {
             currentBomb = GameObject.FindWithTag("Bomb");
             currentBomb.transform.position = bombSpawn.transform.position;
