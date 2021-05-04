@@ -71,7 +71,8 @@ public class Bomb : MonoBehaviour
         }
 
         // Sound Effect
-        source.PlayOneShot(explosion, 1f);
+        //source.PlayOneShot(explosion, 1f);
+        AudioSource.PlayClipAtPoint(explosion, this.gameObject.transform.position);
 
         bombStatus.bombCreated = false;
         
