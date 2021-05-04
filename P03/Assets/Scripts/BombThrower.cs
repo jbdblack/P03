@@ -44,6 +44,7 @@ public class BombThrower : MonoBehaviour
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.useGravity = false;
         bombCreated = true;
+        Debug.Log("Bomb created");
 
     }
 
@@ -59,6 +60,7 @@ public class BombThrower : MonoBehaviour
         rb.useGravity = true;
         rb.AddForce(transform.forward * throwForce, ForceMode.VelocityChange);
         bombCreated = false;
+        Debug.Log("Bomb thrown");
     }
 
     public void MoveBomb()

@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
     float countdown;
     bool hasExploded = false;
 
-    public BombThrower bt;
+    BombThrower bombStatus;
 
 
 
@@ -22,6 +22,7 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         countdown = delay;
+        bombStatus = GameObject.FindWithTag("Player").GetComponent<BombThrower>();
     }
 
     // Update is called once per frame
@@ -63,6 +64,8 @@ public class Bomb : MonoBehaviour
             }
             // Damage
         }
+
+        bombStatus.bombCreated = false;
         
         // Remove grenade
         Destroy(gameObject);
