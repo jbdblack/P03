@@ -11,7 +11,15 @@ public class BombThrower : MonoBehaviour
     public bool bombThrown = false;
     public Transform _transform;
     public GameObject currentBomb;
-    
+
+    private AudioSource source;
+    [SerializeField] AudioClip createBomb;
+
+    void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -47,6 +55,8 @@ public class BombThrower : MonoBehaviour
         bombCreated = true;
         bombThrown = false;
         Debug.Log("Bomb created");
+        // Sound Effect
+        source.PlayOneShot(createBomb, 1f);
 
     }
 
