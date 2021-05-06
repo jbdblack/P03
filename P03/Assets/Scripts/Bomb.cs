@@ -33,19 +33,13 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*countdown -= Time.deltaTime;
-        if (countdown <= 0f && !hasExploded)
-        {
-            Explode();
-            hasExploded = true;
-        }*/
+        
 
         if (Input.GetKey(KeyCode.F))
         {
             Explode();
             hasExploded = true;
         }
-
 
 
     }
@@ -67,11 +61,10 @@ public class Bomb : MonoBehaviour
             {
                 rb.AddExplosionForce(force, transform.position, radius);
             }
-            // Damage
+            
         }
 
         // Sound Effect
-        //source.PlayOneShot(explosion, 1f);
         AudioSource.PlayClipAtPoint(explosion, this.gameObject.transform.position);
 
         bombStatus.bombCreated = false;

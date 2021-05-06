@@ -15,6 +15,8 @@ public class BombThrower : MonoBehaviour
     private AudioSource source;
     [SerializeField] AudioClip createBomb;
 
+    
+
     void Start()
     {
         source = GetComponent<AudioSource>();
@@ -35,13 +37,7 @@ public class BombThrower : MonoBehaviour
             ThrowBomb();
         }
 
-        
-
-        /*if (Input.GetKeyDown(KeyCode.C))
-        {
-            ThrowBomb(); 
-        }*/
-
+        // Move bomb position while Player is holding it
         MoveBomb();
 
     }
@@ -57,14 +53,15 @@ public class BombThrower : MonoBehaviour
         Debug.Log("Bomb created");
         // Sound Effect
         source.PlayOneShot(createBomb, 1f);
+        
+        
 
     }
 
 
     void ThrowBomb()
     {
-        // Find the created bomb
-        //GameObject bomb = GameObject.Find("bomb");
+        // Find the created bomb    
         Rigidbody rb = GameObject.FindWithTag("Bomb").GetComponent<Rigidbody>();
 
        if(bombThrown == false)
